@@ -1,6 +1,14 @@
 import { IToDo, toDoState } from '../atoms';
 import { useSetRecoilState } from 'recoil';
 
+
+const food = ['pizza', 'mango' , 'kimchi', 'kimbab']
+const front = ['pizza']
+const back = ['kimchi', 'kimbab']
+const finalPart = [...front , '감' , ...back]
+
+console.log(finalPart)
+
 function ToDo({ text ,category, id }: IToDo) 
 { 
   const setToDos = useSetRecoilState(toDoState)
@@ -10,10 +18,12 @@ function ToDo({ text ,category, id }: IToDo)
     setToDos((oldToDos) =>
       { 
         const targetIndex = oldToDos.findIndex(toDo => toDo.id === id )
-        const oldTodo = oldToDos[targetIndex]
-        const newTodo = { text , id , category: name }
-        console.log('replace the to do in the index', targetIndex , 'with' , newTodo)
-        return oldToDos
+        const oldToDo = oldToDos[targetIndex]
+        const newToDo = { text , id , category: name as any}
+        return [
+          ...oldToDos.slice(0 , targetIndex),
+          newToDo,...oldToDos.slice(targetIndex + 1) 
+        ]
       })
   }
 
