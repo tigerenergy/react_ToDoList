@@ -1,4 +1,4 @@
-import { IToDo, toDoState } from '../atoms';
+import { IToDo , toDoState , Categories} from '../atoms';
 import { useSetRecoilState } from 'recoil';
 
 
@@ -24,9 +24,9 @@ function ToDo({ text ,category, id }: IToDo)
   return (
     <li>
       <span>{text}</span>
-      {category !== 'DOING' && <button name='DOING' onClick={onClick}>DOING</button>}
-      {category !== 'TO_DO' && <button name='TO_DO' onClick={onClick}>TODO</button>}
-      {category !== 'DONE' && <button name='DONE' onClick={onClick}>DONE</button>}
+      {category !== Categories.DOING && <button name={Categories.DOING} onClick={onClick}>DOING</button>}
+      {category !== Categories.TO_DO && <button name={Categories.TO_DO} onClick={onClick}>TODO</button>}
+      {category !== Categories.DONE && <button name={Categories.DONE} onClick={onClick}>DONE</button>}
     </li>
   )
 }
