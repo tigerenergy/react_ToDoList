@@ -2,12 +2,6 @@ import { IToDo, toDoState } from '../atoms';
 import { useSetRecoilState } from 'recoil';
 
 
-const food = ['pizza', 'mango' , 'kimchi', 'kimbab']
-const front = ['pizza']
-const back = ['kimchi', 'kimbab']
-const finalPart = [...front , '감' , ...back]
-
-console.log(finalPart)
 
 function ToDo({ text ,category, id }: IToDo) 
 { 
